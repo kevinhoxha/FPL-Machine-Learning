@@ -1,0 +1,5 @@
+assists,bonus,clean_sheets,goals_conceded,goals_scored,minutes,opponent_team,own_goals,penalties_missed,penalties_saved,red_cards,round,saves,total_points,was_home,yellow_cards
+0,0,1,0,0,67,7,0,0,0,0,25,0,3,False,0
+0,0,0,1,0,60,3,0,0,0,0,26,0,2,True,0
+0,0,0,1,0,80,4,0,0,0,0,27,0,2,True,0
+0,0,0,0,0,1,14,0,0,0,0,29,0,1,True,0
