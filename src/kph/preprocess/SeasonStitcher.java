@@ -20,7 +20,7 @@ public class SeasonStitcher
 				{
 					continue;
 				}
-				FileWriter playerFile = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\" + name[0] + "_" + name[1] + ".csv");
+				FileWriter playerFile = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\raw\\" + name[0] + "_" + name[1] + ".csv");
 				playerFile.write(FIELDS + "\n");
 				for (int i = 0; i < 4; i++)
 				{
