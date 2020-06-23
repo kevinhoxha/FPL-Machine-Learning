@@ -8,19 +8,26 @@ import java.util.Scanner;
 public class TrainingDataCreator
 {
 	private static String FIELDS = "avg_assists,avg_bonus,avg_clean_sheets,avg_goals_conceded,avg_goals_scored,avg_minutes,avg_opponent_team,avg_own_goals,avg_penalties_missed,avg_penalties_saved,avg_red_cards,avg_round,avg_saves,avg_total_points,avg_home,avg_yellow_cards,actual_points";
-	
+
 	public static void main(String[] args)
+	{
+		createFile(3);
+		createFile(4);
+		createFile(5);
+	}
+
+	public static void createFile(int numGames)
 	{
 		try
 		{
 			File dir = new File("C:\\MyGithub\\FPL-Machine-Learning\\data\\raw");
-			FileWriter playerFile3 = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\training3.csv");
-			FileWriter playerFile4 = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\training4.csv");
-			FileWriter playerFile5 = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\training5.csv");
+			FileWriter playerFile = new FileWriter(
+					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\training" + numGames + ".csv");
+			FileWriter testFile = new FileWriter(
+					"C:\\MyGithub\\FPL-Machine-Learning\\data\\test\\test" + numGames + ".csv");
 			File[] directoryListing = dir.listFiles();
-			playerFile3.write(FIELDS + "\n");
-			playerFile4.write(FIELDS + "\n");
-			playerFile5.write(FIELDS + "\n");
+			playerFile.write(FIELDS + "\n");
+			testFile.write(FIELDS + "\n");
 			for (File child : directoryListing)
 			{
 				Scanner s = new Scanner(child);
@@ -28,112 +35,68 @@ public class TrainingDataCreator
 				while (s.hasNextLine())
 				{
 					String[] line = s.nextLine().split(",");
-					matches.add(line);	
+					matches.add(line);
 				}
-				for (int i = 4; i < matches.size(); i++)
+				for (int i = numGames + 1; i < matches.size(); i++)
 				{
-					for (int j = 0; j < matches.get(0).length; j++)
+					if (Math.random() < .7)
 					{
-						double d = 0;
-						if (j == 14)
+						for (int j = 0; j < matches.get(0).length; j++)
 						{
-							if (Boolean.parseBoolean(matches.get(i-1)[j]))
+							double d = 0;
+							if (j == 14)
 							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-2)[j]))
+								for (int k = 1; k <= numGames; k++)
+								{
+									if (Boolean.parseBoolean(matches.get(i - k)[j]))
+									{
+										d += 1;
+									}
+								}
+								d /= numGames;
+							} else
 							{
-								d += 1;
+								for (int k = 1; k <= numGames; k++)
+								{
+									d += Double.parseDouble(matches.get(i - k)[j]);
+								}
+								d /= numGames;
 							}
-							if (Boolean.parseBoolean(matches.get(i-3)[j]))
-							{
-								d += 1;
-							}
-							d /= 3.0;
+							playerFile.write(d + ",");
 						}
-						else
-						{
-							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]))/3.0;
-						}
-						playerFile3.write(d + ",");
-					}
-					playerFile3.write(Integer.parseInt(matches.get(i)[13]) * 1.0  + "\n");
-				}
-				for (int i = 5; i < matches.size(); i++)
-				{
-					for (int j = 0; j < matches.get(0).length; j++)
+						playerFile.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
+					} else
 					{
-						double d = 0;
-						if (j == 14)
+						for (int j = 0; j < matches.get(0).length; j++)
 						{
-							if (Boolean.parseBoolean(matches.get(i-1)[j]))
+							double d = 0;
+							if (j == 14)
 							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-2)[j]))
+								for (int k = 1; k <= numGames; k++)
+								{
+									if (Boolean.parseBoolean(matches.get(i - k)[j]))
+									{
+										d += 1;
+									}
+								}
+								d /= numGames;
+							} else
 							{
-								d += 1;
+								for (int k = 1; k <= numGames; k++)
+								{
+									d += Double.parseDouble(matches.get(i - k)[j]);
+								}
+								d /= numGames;
 							}
-							if (Boolean.parseBoolean(matches.get(i-3)[j]))
-							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-4)[j]))
-							{
-								d += 1;
-							}
-							d /= 4.0;
+							testFile.write(d + ",");
 						}
-						else
-						{
-							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]))/4.0;
-						}
-						playerFile4.write(d + ",");
+						testFile.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
 					}
-					playerFile4.write(Integer.parseInt(matches.get(i)[13]) * 1.0  + "\n");
-				}
-				for (int i = 6; i < matches.size(); i++)
-				{
-					for (int j = 0; j < matches.get(0).length; j++)
-					{
-						double d = 0;
-						if (j == 14)
-						{
-							if (Boolean.parseBoolean(matches.get(i-1)[j]))
-							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-2)[j]))
-							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-3)[j]))
-							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-4)[j]))
-							{
-								d += 1;
-							}
-							if (Boolean.parseBoolean(matches.get(i-5)[j]))
-							{
-								d += 1;
-							}
-							d /= 5.0;
-						}
-						else
-						{
-							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]) + Double.parseDouble(matches.get(i-5)[j]))/5.0;
-						}
-						playerFile5.write(d + ",");
-					}
-					playerFile5.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
 				}
 				s.close();
 			}
-			playerFile3.close();
-			playerFile4.close();
-			playerFile5.close();
+			playerFile.close();
+			testFile.close();
 		} catch (Exception e)
 		{
 			System.out.println(e);
