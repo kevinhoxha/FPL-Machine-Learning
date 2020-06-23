@@ -52,18 +52,27 @@ public class SeasonStitcher
 						}
 						while (f.hasNextLine())
 						{
-							String[] str = f.nextLine().split(",");
+							String str1 = f.nextLine();
+							if (str1.equals(""))
+							{
+								continue;
+							}
+							String[] str = str1.split(",");
 							if (str[0].equals("assists"))
 							{
 								continue;
 							}
 							if (i != 3)
 							{
-								playerFile.write(str[0] + "," + str[4] + "," + str[6] + "," + str[17] + "," + str[18] + "," + str[27] + "," + str[30] + "," + str[31] + "," + str[33] + "," + str[34] + "," + str[36] + "," + str[37] + "," + str[38] + "," + str[46] + "," + str[51] + "," + str[53] + "\n");
+								playerFile.write(str[0] + "," + str[4] + "," + str[6] + "," + str[17] + "," + str[18] + "," + str[27] + "," + str[30] + "," + str[31] + "," + str[33] + "," + str[34] + "," + str[36] + "," + str[37] + "," + str[38] + "," + str[46] + "," + str[51] + "," + str[53]);
 							}
 							else
 							{
-								playerFile.write(str[0] + "," + str[1] + "," + str[3] + "," + str[7] + "," + str[8] + "," + str[12] + "," + str[13] + "," + str[14] + "," + str[15] + "," + str[16] + "," + str[17] + "," + str[18] + "," + str[19] + "," + str[24] + "," + str[29] + "," + str[30] + "\n");	
+								playerFile.write(str[0] + "," + str[1] + "," + str[3] + "," + str[7] + "," + str[8] + "," + str[12] + "," + str[13] + "," + str[14] + "," + str[15] + "," + str[16] + "," + str[17] + "," + str[18] + "," + str[19] + "," + str[24] + "," + str[29] + "," + str[30]);	
+							}
+							if (f.hasNextLine())
+							{
+								playerFile.write("\n");
 							}
 						}
 						f.close();
