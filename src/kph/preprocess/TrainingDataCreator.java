@@ -57,7 +57,7 @@ public class TrainingDataCreator
 						}
 						playerFile3.write(d + ",");
 					}
-					playerFile3.write(Integer.parseInt(matches.get(i)[13]) + "\n");
+					playerFile3.write(Integer.parseInt(matches.get(i)[13]) * 1.0  + "\n");
 				}
 				for (int i = 5; i < matches.size(); i++)
 				{
@@ -90,7 +90,7 @@ public class TrainingDataCreator
 						}
 						playerFile4.write(d + ",");
 					}
-					playerFile4.write(Integer.parseInt(matches.get(i)[13]) + "\n");
+					playerFile4.write(Integer.parseInt(matches.get(i)[13]) * 1.0  + "\n");
 				}
 				for (int i = 6; i < matches.size(); i++)
 				{
@@ -127,7 +127,7 @@ public class TrainingDataCreator
 						}
 						playerFile5.write(d + ",");
 					}
-					playerFile5.write(Integer.parseInt(matches.get(i)[13]) + "\n");
+					playerFile5.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
 				}
 				s.close();
 			}
