@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TrainingDataCreator
 {
-	private static String FIELDS = "avg_assists,avg_bonus,avg_clean_sheets,avg_goals_conceded,avg_goals_scored,avg_minutes,avg_opponent_team,avg_own_goals,avg_penalties_missed,avg_penalties_saved,avg_red_cards,avg_round,avg_saves,avg_total_points,avg_yellow_cards,actual_points";
+	private static String FIELDS = "avg_assists,avg_bonus,avg_clean_sheets,avg_goals_conceded,avg_goals_scored,avg_minutes,avg_opponent_team,avg_own_goals,avg_penalties_missed,avg_penalties_saved,avg_red_cards,avg_round,avg_saves,avg_total_points,avg_home,avg_yellow_cards,actual_points";
 	
 	public static void main(String[] args)
 	{
@@ -34,11 +34,27 @@ public class TrainingDataCreator
 				{
 					for (int j = 0; j < matches.get(0).length; j++)
 					{
+						double d = 0;
 						if (j == 14)
 						{
-							continue;
+							if (Boolean.parseBoolean(matches.get(i-1)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-2)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-3)[j]))
+							{
+								d += 1;
+							}
+							d /= 3.0;
 						}
-						double d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]))/3.0;
+						else
+						{
+							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]))/3.0;
+						}
 						playerFile3.write(d + ",");
 					}
 					playerFile3.write(Integer.parseInt(matches.get(i)[13]) + "\n");
@@ -47,11 +63,31 @@ public class TrainingDataCreator
 				{
 					for (int j = 0; j < matches.get(0).length; j++)
 					{
+						double d = 0;
 						if (j == 14)
 						{
-							continue;
+							if (Boolean.parseBoolean(matches.get(i-1)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-2)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-3)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-4)[j]))
+							{
+								d += 1;
+							}
+							d /= 4.0;
 						}
-						double d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]))/4.0;
+						else
+						{
+							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]))/4.0;
+						}
 						playerFile4.write(d + ",");
 					}
 					playerFile4.write(Integer.parseInt(matches.get(i)[13]) + "\n");
@@ -60,11 +96,35 @@ public class TrainingDataCreator
 				{
 					for (int j = 0; j < matches.get(0).length; j++)
 					{
+						double d = 0;
 						if (j == 14)
 						{
-							continue;
+							if (Boolean.parseBoolean(matches.get(i-1)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-2)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-3)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-4)[j]))
+							{
+								d += 1;
+							}
+							if (Boolean.parseBoolean(matches.get(i-5)[j]))
+							{
+								d += 1;
+							}
+							d /= 5.0;
 						}
-						double d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]) + Double.parseDouble(matches.get(i-5)[j]))/5.0;
+						else
+						{
+							d = (Double.parseDouble(matches.get(i-1)[j]) + Double.parseDouble(matches.get(i-2)[j]) + Double.parseDouble(matches.get(i-3)[j]) + Double.parseDouble(matches.get(i-4)[j]) + Double.parseDouble(matches.get(i-5)[j]))/5.0;
+						}
 						playerFile5.write(d + ",");
 					}
 					playerFile5.write(Integer.parseInt(matches.get(i)[13]) + "\n");
