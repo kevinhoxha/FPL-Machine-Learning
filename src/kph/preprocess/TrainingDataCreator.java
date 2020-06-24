@@ -21,10 +21,13 @@ public class TrainingDataCreator
 		try
 		{
 			File dir = new File("C:\\MyGithub\\FPL-Machine-Learning\\data\\raw");
-			FileWriter playerFile = new FileWriter(
-					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\training" + numGames + ".csv");
+			FileWriter trainingFile = new FileWriter(
+					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\ma" + numGames + "_train.csv");
+			FileWriter testFile = new FileWriter(
+					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\ma" + numGames + "_test.csv");
 			File[] directoryListing = dir.listFiles();
-			playerFile.write(FIELDS + "\n");
+			trainingFile.write(FIELDS + "\n");
+			testFile.write(FIELDS + "\n");
 			for (File child : directoryListing)
 			{
 				Scanner s = new Scanner(child);
@@ -36,34 +39,65 @@ public class TrainingDataCreator
 				}
 				for (int i = numGames + 1; i < matches.size(); i++)
 				{
-					for (int j = 0; j < matches.get(0).length; j++)
+					if (Math.random() < .7) 
 					{
-						double d = 0;
-						if (j == 14)
+						for (int j = 0; j < matches.get(0).length; j++)
 						{
-							for (int k = 1; k <= numGames; k++)
+							double d = 0;
+							if (j == 14)
 							{
-								if (Boolean.parseBoolean(matches.get(i - k)[j]))
+								for (int k = 1; k <= numGames; k++)
 								{
-									d += 1;
+									if (Boolean.parseBoolean(matches.get(i - k)[j]))
+									{
+										d += 1;
+									}
 								}
-							}
-							d /= numGames;
-						} else
-						{
-							for (int k = 1; k <= numGames; k++)
+								d /= numGames;
+							} else
 							{
-								d += Double.parseDouble(matches.get(i - k)[j]);
+								for (int k = 1; k <= numGames; k++)
+								{
+									d += Double.parseDouble(matches.get(i - k)[j]);
+								}
+								d /= numGames;
 							}
-							d /= numGames;
+							trainingFile.write(d + ",");
 						}
-						playerFile.write(d + ",");
+						trainingFile.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
 					}
-					playerFile.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
+					else
+					{
+						for (int j = 0; j < matches.get(0).length; j++)
+						{
+							double d = 0;
+							if (j == 14)
+							{
+								for (int k = 1; k <= numGames; k++)
+								{
+									if (Boolean.parseBoolean(matches.get(i - k)[j]))
+									{
+										d += 1;
+									}
+								}
+								d /= numGames;
+							} else
+							{
+								for (int k = 1; k <= numGames; k++)
+								{
+									d += Double.parseDouble(matches.get(i - k)[j]);
+								}
+								d /= numGames;
+							}
+							testFile.write(d + ",");
+						}
+						testFile.write(Integer.parseInt(matches.get(i)[13]) * 1.0 + "\n");
+					}
 				}
 				s.close();
 			}
-			playerFile.close();
+			trainingFile.close();
+			testFile.close();
 		} catch (Exception e)
 		{
 			System.out.println(e);
