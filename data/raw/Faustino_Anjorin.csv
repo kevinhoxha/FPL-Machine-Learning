@@ -1,2 +1,2 @@
-assists,bonus,clean_sheets,goals_conceded,goals_scored,minutes,opponent_team,own_goals,penalties_missed,penalties_saved,red_cards,round,saves,total_points,was_home,yellow_cards
-0,0,0,0,0,19,8,0,0,0,0,29,0,1,True,0
+assists,bonus,bps,clean_sheets,creativity,goals_conceded,goals_scored,ict_index,influence,minutes,opponent_team,own_goals,penalties_missed,penalties_saved,red_cards,saves,threat,total_points,value,was_home,yellow_cards,position
+0,0,1,0,1.2,0,0,1.0,0.0,19,8,0,0,0,0,0,9.0,1,45,True,0,3
