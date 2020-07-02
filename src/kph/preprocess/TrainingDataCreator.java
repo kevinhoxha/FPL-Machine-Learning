@@ -11,6 +11,7 @@ public class TrainingDataCreator
 
 	public static void main(String[] args)
 	{
+		createFile(2);
 		createFile(3);
 		createFile(4);
 		createFile(5);
