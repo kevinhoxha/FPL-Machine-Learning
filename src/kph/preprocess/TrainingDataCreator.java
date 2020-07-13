@@ -23,11 +23,13 @@ public class TrainingDataCreator
 		try
 		{
 			File dir = new File("C:\\MyGithub\\FPL-Machine-Learning\\data\\raw");
+			FileWriter allFile = new FileWriter("C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\ma" + numGames + "_all.csv");
 			FileWriter trainingFile = new FileWriter(
 					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\ma" + numGames + "_train.csv");
 			FileWriter testFile = new FileWriter(
 					"C:\\MyGithub\\FPL-Machine-Learning\\data\\training\\ma" + numGames + "_test.csv");
 			File[] directoryListing = dir.listFiles();
+			allFile.write(FIELDS + "\n");
 			trainingFile.write(FIELDS + "\n");
 			testFile.write(FIELDS + "\n");
 			for (File child : directoryListing)
@@ -65,8 +67,10 @@ public class TrainingDataCreator
 								}
 								d /= numGames;
 							}
+							allFile.write(d + ",");
 							trainingFile.write(d + ",");
 						}
+						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
 						trainingFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
 					}
 					else
@@ -93,13 +97,16 @@ public class TrainingDataCreator
 								}
 								d /= numGames;
 							}
+							allFile.write(d + ",");
 							testFile.write(d + ",");
-						}
+						}		
+						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
 						testFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
 					}
 				}
 				s.close();
 			}
+			allFile.close();
 			trainingFile.close();
 			testFile.close();
 		} catch (Exception e)
