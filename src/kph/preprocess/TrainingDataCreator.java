@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TrainingDataCreator
 {
-	private static String FIELDS = "avg_assists,avg_bonus,avg_bps,avg_clean_sheets,avg_creativity,avg_goals_conceded,avg_goals_scored,avg_ict_index,avg_influence,avg_minutes,avg_opponent_team,avg_own_goals,avg_penalties_missed,avg_penalties_saved,avg_red_cards,avg_saves,avg_threat,avg_total_points,avg_value,was_home,avg_yellow_cards,position,actual_points";
+	private static String FIELDS = "avg_assists,avg_bonus,avg_bps,avg_clean_sheets,avg_creativity,avg_goals_conceded,avg_goals_scored,avg_ict_index,avg_influence,avg_minutes,avg_opponent_team,avg_own_goals,avg_penalties_missed,avg_penalties_saved,avg_red_cards,avg_saves,avg_threat,avg_total_points,avg_value,was_home,avg_yellow_cards,position,actual_points,actual_minutes";
 
 	public static void main(String[] args)
 	{
@@ -70,8 +70,8 @@ public class TrainingDataCreator
 							allFile.write(d + ",");
 							trainingFile.write(d + ",");
 						}
-						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
-						trainingFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
+						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "," + matches.get(i)[9] + "\n");
+						trainingFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "," + matches.get(i)[9] + "\n");
 					}
 					else
 					{
@@ -100,8 +100,8 @@ public class TrainingDataCreator
 							allFile.write(d + ",");
 							testFile.write(d + ",");
 						}		
-						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
-						testFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "\n");
+						allFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "," + matches.get(i)[9] + "\n");
+						testFile.write(Integer.parseInt(matches.get(i)[17]) * 1.0 + "," + matches.get(i)[9] + "\n");
 					}
 				}
 				s.close();
