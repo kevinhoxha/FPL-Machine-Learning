@@ -1,9 +1,9 @@
 # Table of Contents
-[What is Fantasy Premier League](https://github.com/kevinhoxha/FPL-Machine-Learning#what-is-fantasy-premier-league)
-[Project's Objective](https://github.com/kevinhoxha/FPL-Machine-Learning#projects-objective)
-[Training Data](https://github.com/kevinhoxha/FPL-Machine-Learning#training-data)
-[The Model](https://github.com/kevinhoxha/FPL-Machine-Learning#the-model)
-[Conclusions](https://github.com/kevinhoxha/FPL-Machine-Learning#conclusions)
+[What is Fantasy Premier League](https://github.com/kevinhoxha/FPL-Machine-Learning#what-is-fantasy-premier-league)  
+[Project's Objective](https://github.com/kevinhoxha/FPL-Machine-Learning#projects-objective)  
+[Training Data](https://github.com/kevinhoxha/FPL-Machine-Learning#training-data)  
+[The Model](https://github.com/kevinhoxha/FPL-Machine-Learning#the-model)  
+[Conclusions](https://github.com/kevinhoxha/FPL-Machine-Learning#conclusions)  
 # What is Fantasy Premier League?
 Fantasy Premier League (FPL) is an online game in which participants assemble an imaginary team of real-life Premier League players and score points based on their statistical performance in matches. In FPL, each participant has a budget of £100m to build a team of 15 players. Players expected to score more points generally cost more than players expected to score less points. Each week, 11 players are started and 4 must be benched.
 # Project's Objective
