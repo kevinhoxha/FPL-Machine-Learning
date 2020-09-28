@@ -3,7 +3,7 @@ Fantasy Premier League (FPL) is an online game in which participants assemble an
 # Project's Objective
 The goal of this project is to predict the performance of Premier League players based on their past performances. The model calculates the expected fantasy points scored for a player based on average goals, assists, and other metrics in the last 6 games.
 # Training Data
-The data used to train our model comes from vaastav's [Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) repository. This repository includes data for every player and every gameweek. The statistics included in this repository includes:
+The data used to train our model comes from [vaastav](https://github.com/vaastav)'s [Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) repository. This repository includes data for every player and every gameweek. The statistics included in this repository includes:
 
 ```assists``` - The number of times a player makes the final pass leading to a goal. Earns a player 3 points in FPL.  
 ```bonus``` - Number of bonus points given to a player. Allocated after a match based on BPS.  
