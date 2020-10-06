@@ -7,7 +7,7 @@
 # What is Fantasy Premier League?
 Fantasy Premier League (FPL) is an online game in which participants assemble an imaginary team of real-life Premier League players and score points based on their statistical performance in matches. In FPL, each participant has a budget of £100m to build a team of 15 players. Players expected to score more points generally cost more than players expected to score less points. Each week, 11 players are started and 4 must be benched.
 # Project's Objective
-The goal of this project is to predict the performance of Premier League players based on their past performances. The model calculates the expected fantasy points scored for a player based on average goals, assists, and other metrics in the last 6 games.
+The goal of this project is to predict the performance of Premier League players based on their past performances. The model calculates the expected fantasy points scored for a player based on average goals, assists, and other metrics in the last 4 games.
 # Training Data
 The data used to train our model comes from [vaastav](https://github.com/vaastav)'s [Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) repository. This repository includes data for every player and every gameweek. The statistics included in this repository includes:
 
@@ -36,7 +36,7 @@ The data used to train our model comes from [vaastav](https://github.com/vaastav
 
 - Some other factors, such as kickoff time and FPL transfers were also included in the repository. However, I removed these from my analysis since they do not have any correlation with match performance.
 - I formatted all of the player data by combining every player's matches throughout all seasons they have been in the Premier League into one file. 
-- I calculated 2, 3, 4, 5, and 6 game moving averages for all these statistics for each player, as well as the number of points they scored and minutes they played in their next match.
+- I calculated 2, 3, and 4 game moving averages for all these statistics for each player, as well as the number of points they scored and minutes they played in their next match.
 - Used moving averages to get a mathematical representation of a player's form that avoids week-to-week spikes and drops in performance.
 - If the moving average for minutes was 0 minutes, I removed this data point from the data, as the player did not play, and therefore a good prediction could not be made.
 
@@ -44,3 +44,5 @@ The data used to train our model comes from [vaastav](https://github.com/vaastav
 - layers, optimizer, loss function
 - K-fold validation
 # Conclusions
+![alt text](https://i.imgur.com/Je7tTkz.png)
+![alt text](https://i.imgur.com/v5gomTE.png)
