@@ -1,5 +1,5 @@
 # Table of Contents
-[What is Fantasy Premier League](https://github.com/kevinhoxha/FPL-Machine-Learning#what-is-fantasy-premier-league)  
+[What is Fantasy Premier League?](https://github.com/kevinhoxha/FPL-Machine-Learning#what-is-fantasy-premier-league)  
 [Project's Objective](https://github.com/kevinhoxha/FPL-Machine-Learning#projects-objective)  
 [Training Data](https://github.com/kevinhoxha/FPL-Machine-Learning#training-data)  
 [The Model](https://github.com/kevinhoxha/FPL-Machine-Learning#the-model)  
@@ -41,8 +41,20 @@ The data used to train our model comes from [vaastav](https://github.com/vaastav
 - If the moving average for minutes was 0 minutes, I removed this data point from the data, as the player did not play, and therefore a good prediction could not be made.
 
 # The Model
-- layers, optimizer, loss function
-- K-fold validation
-# Conclusions
+### 1. Feature normalization  
+The values of the 18 different features used in this model span very different ranges. For example, 'avg_minutes' ranges from 0 to 90, 'avg_total_points' and several other features take positive integer values typically less than 20, while 'avg_creativity' and 'avg_infulence' range from 0 to 150. Thus, to make the learning easier, I decided to normalize most features by using the feature-wise Z-scores of individual values instead of the values themselves. That's done in normalize_feature() method. For the 'avg_minutes' played, however, I'm just normalizing them as a percentage of a full game of 90 minutes.
+
+### 2. Players' positions  
+Midfielders and attacking players earn most of their points for scoring goals, whereas goalies and defenders earn the points by preventing goals. Thus, I decided to separate all training data by player positions and effectively build two distinct models.
+
+### 3. The neural network  
+Given that each training data set consists of about 16,000 records, I'm using a network with only 2 hidden layers to avoid overfitting. This model is designed to predict the total points a player will get in the next game. As such, the network ends with a single Dense layer and no activation, i.e. a linear layer, because I want the prediction values to be continuous in any range. If I had chosen a sigmoid activation then the predictions would be in the interval [0,1]. I'm using the mse loss function -- mean squared error, the squared difference between the predicted value and target -- as it's common with regression models like this. Additionally, I'm also monitoring the MAE (mean absolute error) metric which represents the mean of absolute differences between prediction and target values during training.
+
+### 4. K-fold validation  
+The number of epochs is a parameter of the model and, in order to find the optimal value for it, I ran the training for all epoch values in [1, 500] interval and monitored the resulting MAE values. To improve this further, I used the K-fold validation method with k=4. Basically, for any given epoch number, the training data gets split into 4 subsets. Each subset is used as a validation set while the other 3 are used for training. The final validation score for that given epoch is then the average scores of all validation runs. Finally, I plotted the validation MAEs for all epochs. I used a smoothing function to remove some of the volatility in MAE.  
 ![alt text](https://i.imgur.com/Je7tTkz.png)
 ![alt text](https://i.imgur.com/v5gomTE.png)
+### 5. Further model tuning  
+Following the same method above, at some pint in the future, I will also tune some other model parameters like the number of hidden layers, batch size, and more granular models for each player position in the field.
+
+# Conclusions
