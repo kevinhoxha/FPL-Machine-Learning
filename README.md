@@ -3,11 +3,11 @@
 2.  [Project's Objective](https://github.com/kevinhoxha/FPL-Machine-Learning#projects-objective)  
 3.  [Training Data](https://github.com/kevinhoxha/FPL-Machine-Learning#training-data)  
 4.  [The Model](https://github.com/kevinhoxha/FPL-Machine-Learning#the-model)  
-  -[Feature Normalization](https://github.com/kevinhoxha/FPL-Machine-Learning#1-feature-normalization)  
-  -[Players' Positions](https://github.com/kevinhoxha/FPL-Machine-Learning#2-players-positions)  
-  -[The Neural Network](https://github.com/kevinhoxha/FPL-Machine-Learning#3-the-neural-network)  
-  -[K-Fold Validation](https://github.com/kevinhoxha/FPL-Machine-Learning#4-k-fold-validation)  
-  -[Further Model Tuning](https://github.com/kevinhoxha/FPL-Machine-Learning#5-further-model-tuning)  
+  -[Feature Normalization](https://github.com/kevinhoxha/FPL-Machine-Learning#feature-normalization)  
+  -[Players' Positions](https://github.com/kevinhoxha/FPL-Machine-Learning#players-positions)  
+  -[The Neural Network](https://github.com/kevinhoxha/FPL-Machine-Learning#the-neural-network)  
+  -[K-Fold Validation](https://github.com/kevinhoxha/FPL-Machine-Learning#k-fold-validation)  
+  -[Further Model Tuning](https://github.com/kevinhoxha/FPL-Machine-Learning#further-model-tuning)  
 5.  [Conclusions](https://github.com/kevinhoxha/FPL-Machine-Learning#conclusions)  
 # What is Fantasy Premier League?
 Fantasy Premier League (FPL) is an online game in which participants assemble an imaginary team of real-life Premier League players and score points based on their statistical performance in matches. In FPL, each participant has a budget of £100m to build a team of 15 players. Players expected to score more points generally cost more than players expected to score less points. Each week, 11 players are started and 4 must be benched.
