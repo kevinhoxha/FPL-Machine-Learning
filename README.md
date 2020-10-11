@@ -64,5 +64,5 @@ For my next steps, I will follow the same methods to tune some other model param
 # Conclusions
 * Deep learning techniques can be used to build a predictive model for Fantasy Premier league. When two hidden layers are used, the number of epochs that minimize the mean absolute error during validation is about 80. Anything higher than that would result in overfitting.
 * Using 4-game moving averages for all features improves the stability of the model.
-* The model for midfielders and attackers has an average MAE=1.86, and since the range of points is from -2 (when players get a red card) to 20 (a midfielder scoring a hat trick), the the model's error is 1.86/22=**8.45%**
-* The goalies and defenders' model yielded an average MAE=2.33, which implies an error of **10.59%**
+* The model for midfielders and attackers has an average MAE=1.86, and since the range of points is from -2 to 7.5, the the model's error is 1.86/9.5=**19.58%**
+* The goalies and defenders' model yielded an average MAE=2.33, which implies an error of **24.53%**
