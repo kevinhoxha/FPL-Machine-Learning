@@ -3,11 +3,11 @@
 2.  [Project's Objective](https://github.com/kevinhoxha/FPL-Machine-Learning#projects-objective)  
 3.  [Training Data](https://github.com/kevinhoxha/FPL-Machine-Learning#training-data)  
 4.  [The Model](https://github.com/kevinhoxha/FPL-Machine-Learning#the-model)  
-  -[Feature Normalization](https://github.com/kevinhoxha/FPL-Machine-Learning#feature-normalization)  
-  -[Players' Positions](https://github.com/kevinhoxha/FPL-Machine-Learning#players-positions)  
-  -[The Neural Network](https://github.com/kevinhoxha/FPL-Machine-Learning#the-neural-network)  
-  -[K-Fold Validation](https://github.com/kevinhoxha/FPL-Machine-Learning#k-fold-validation)  
-  -[Further Model Tuning](https://github.com/kevinhoxha/FPL-Machine-Learning#further-model-tuning)  
+  a.  [Feature Normalization](https://github.com/kevinhoxha/FPL-Machine-Learning#feature-normalization)  
+  b.  [Players' Positions](https://github.com/kevinhoxha/FPL-Machine-Learning#players-positions)  
+  c.  [The Neural Network](https://github.com/kevinhoxha/FPL-Machine-Learning#the-neural-network)  
+  d.  [K-Fold Validation](https://github.com/kevinhoxha/FPL-Machine-Learning#k-fold-validation)  
+  e.  [Further Model Tuning](https://github.com/kevinhoxha/FPL-Machine-Learning#further-model-tuning)  
 5.  [Conclusions](https://github.com/kevinhoxha/FPL-Machine-Learning#conclusions)  
 # What is Fantasy Premier League?
 Fantasy Premier League (FPL) is an online game in which participants assemble an imaginary team of real-life Premier League players and score points based on their statistical performance in matches. In FPL, each participant has a budget of £100m to build a team of 15 players. Players expected to score more points generally cost more than players expected to score less points. Each week, 11 players are started and 4 must be benched.
@@ -59,6 +59,10 @@ The number of epochs is a parameter of the model and, in order to find the optim
 ![alt text](https://i.imgur.com/Je7tTkz.png)
 ![alt text](https://i.imgur.com/v5gomTE.png)
 ### Further Model Tuning  
-Following the same method above, at some pint in the future, I will also tune some other model parameters like the number of hidden layers, batch size, and more granular models for each player position in the field.
+For my next steps, I will follow the same methods to tune some other model parameters like the number of hidden layers and the batch size, as well as investigating if splitting defenders, midfielders, and attackers into separate models would improve the predictions.
 
 # Conclusions
+* Deep learning techniques can be used to build a predictive model for Fantasy Premier league. When two hidden layers are used, the number of epochs that minimize the mean absolute error during validation is about 80. Anything higher than that would result in overfitting.
+* Using 4-game moving averages for all features improves the stability of the model.
+* The model for midfielders and attackers has an average MAE=1.86, and since the range of points is from -2 (when players get a red card) to 20 (a midfielder scoring a hat trick), the the model's error is 1.86/22=**8.45%**
+* The goalies and defenders' model yielded an average MAE=2.33, which implies an error of **10.59%**
